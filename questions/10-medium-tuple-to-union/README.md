@@ -5,9 +5,13 @@ Implement a generic `TupleToUnion<T>` which covers the values of a tuple to its 
 For example
 
 ```ts
-type Arr = ['1', '2', '3']
+type AllKey = Capitalize<'all'>
 
-const a: TupleToUnion<Arr> // expected to be '1' | '2' | '3'
+type MapAllValues<T extends any[]> = {
+  [K in T[number] as AllKey] : K
+}
+
+type TupleToUnion<T extends any[]> = MapAllValues<T>[AllKey]
 ```
 
 <!--info-footer-start--><br><a href="../../README.md" target="_blank"><img src="https://img.shields.io/badge/-Back-grey" alt="Back"/></a> <a href="https://tsch.js.org/10/answer" target="_blank"><img src="https://img.shields.io/badge/-Share%20your%20Solutions-teal" alt="Share your Solutions"/></a> <a href="https://tsch.js.org/10/solutions" target="_blank"><img src="https://img.shields.io/badge/-Check%20out%20Solutions-de5a77?logo=awesome-lists&logoColor=white" alt="Check out Solutions"/></a> <!--info-footer-end-->
