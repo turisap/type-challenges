@@ -16,6 +16,12 @@ interface Dog {
   color: 'brown' | 'white' | 'black'
 }
 
+type Typed = {type: string}
+
+type LookUp<U, T> = U extends infer A ? A extends Typed ? A['type'] extends T ? A : never : null: never
+
+type TTT = LookUp<Animal, 'dog'>
+
 type MyDogType = LookUp<Cat | Dog, 'dog'> // expected to be `Dog`
 ```
 
