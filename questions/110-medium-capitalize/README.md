@@ -2,6 +2,11 @@
 
 Implement `Capitalize<T>` which converts the first letter of a string to uppercase and leave the rest as-is.
 
+type Capitalize<S extends string> = S extends `${infer Start}${infer END}` ? `${Uppercase<Start>}${END}`: S
+
+type RRR = Capitalize<'foobar'>
+type SSS = Capitalize<''>
+
 For example
 
 ```ts
