@@ -5,7 +5,7 @@ Implement `Replace<S, From, To>` which replace the string `From` with `To` once 
 For example
 
 ```ts
-type replaced = Replace<'types are fun!', 'fun', 'awesome'> // expected to be 'types are awesome!'
+type Replace<S extends string, From extends string, To extends string> =  S extends `${infer Start}${From}${infer End}` ? From extends '' ? S : `${Start}${To}${End}`: S;
 ```
 
 
